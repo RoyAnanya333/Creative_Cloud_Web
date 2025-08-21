@@ -1,0 +1,4 @@
+/* auth.css */
+.auth-wrap{max-width:420px;margin:40px auto;padding:22px;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+.auth-wrap h2{text-align:center;color:#2b6cb0}
+.auth-actions{display:flex;justify-content:center;gap:8px;margin-top:12px}

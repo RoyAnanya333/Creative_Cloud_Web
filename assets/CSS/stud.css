@@ -1,0 +1,119 @@
+
+
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    background: #2563eb;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #1e40af;
+}
+
+.search-form {
+    display: flex;
+    gap: 8px;
+}
+
+.search-form input {
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.search-form button {
+    padding: 7px 14px;
+    border: none;
+    background: #16a34a;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-form button:hover {
+    background: #15803d;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 14px;
+}
+
+.table th {
+    background: #f3f4f6;
+    font-weight: bold;
+}
+
+.btn-action {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-delete {
+    background: #dc2626;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: #991b1b;
+}
+
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #e0d6f5;
+    color: #4b0082;
+}
+
+
+
+/* Edit button */
+.btn-edit {
+    background-color: #3b82f6; /* Blue */
+}
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
+/* Restrict / Unrestrict button */
+.btn-restrict {
+    background-color: #f97316; /* Orange */
+}
+.btn-restrict:hover {
+    background-color: #ea580c;
+}
