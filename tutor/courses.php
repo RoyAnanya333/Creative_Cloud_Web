@@ -1,16 +1,12 @@
 <?php
+session_start();
 include("../config/config.php");
-
-// Start session safely
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 // -------------------------
 // Session check for tutor
 // -------------------------
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'tutor') {
-    header("Location: ../login/login.php");
+    header("Location: ../guest/login.php");
     exit;
 }
 
@@ -27,12 +23,6 @@ if (!$tutor_profile) {
     exit;
 }
 
-// Fetch user info from users table
-$stmt_user = $conn->prepare("SELECT full_name, created_at, salary FROM users WHERE id=? LIMIT 1");
-$stmt_user->bind_param("i", $tutor_user_id);
-$stmt_user->execute();
-$user_info = $stmt_user->get_result()->fetch_assoc();
-
 // Fetch courses assigned to this tutor
 $stmt_courses = $conn->prepare("
     SELECT c.*, 
@@ -44,57 +34,31 @@ $stmt_courses = $conn->prepare("
 $stmt_courses->bind_param("i", $tutor_profile['id']);
 $stmt_courses->execute();
 $courses = $stmt_courses->get_result();
-
-// Calculate total courses
-$total_courses = $courses->num_rows;
-
-// Calculate total students across all courses
-$stmt_total_students = $conn->prepare("
-    SELECT COUNT(DISTINCT e.student_id) AS total_students
-    FROM enrollments e
-    JOIN courses c ON e.course_id = c.id
-    WHERE c.tutor_profile_id = ?
-");
-$stmt_total_students->bind_param("i", $tutor_profile['id']);
-$stmt_total_students->execute();
-$total_students = $stmt_total_students->get_result()->fetch_assoc()['total_students'];
 ?>
 
 <?php include("../includes/header_tutor.php"); ?>
-<link rel="stylesheet" href="../assets/css/main.css">
 
-<div class="dashboard-container">
-    <h1>Welcome, <?= htmlspecialchars($user_info['full_name']) ?>!</h1>
-
-    <div class="tutor-details">
-        <p><strong>User ID:</strong> <?= htmlspecialchars($tutor_user_id) ?></p>
-        <p><strong>Tutor Code:</strong> <?= htmlspecialchars($tutor_profile['tutor_code']) ?></p>
-        <p><strong>Apointment Date:</strong> <?= date("d M Y", strtotime($user_info['created_at'])) ?></p>
-        <p><strong>Monthly Salary:</strong> BDT <?= number_format($user_info['salary'], 2) ?></p>
-        <p><strong>Total Courses:</strong> <?= $total_courses ?></p>
-        <p><strong>Total Students:</strong> <?= $total_students ?></p>
-    </div>
-
-    <h2>Your Courses</h2>
-    <div class="course-cards">
-        <?php if ($courses->num_rows > 0): ?>
+<div class="courses-container">
+    <h1>Your Courses</h1>
+    <?php if ($courses->num_rows > 0): ?>
+        <div class="course-cards">
             <?php while ($course = $courses->fetch_assoc()): ?>
                 <div class="course-card">
                     <h3><?= htmlspecialchars($course['title']) ?></h3>
                     <p><?= htmlspecialchars($course['description']) ?></p>
                     <p><strong>Level:</strong> <?= htmlspecialchars($course['level']) ?></p>
                     <p><strong>Enrolled Students:</strong> <?= $course['enrolled_students'] ?></p>
-                    <a href="manage_course.php?course_id=<?= $course['id'] ?>" class="btn">Manage</a>
+                    <a href="manage_course.php?course_id=<?= $course['id'] ?>" class="btn">Classroom</a>
                 </div>
             <?php endwhile; ?>
-        <?php else: ?>
-            <p>You have no assigned courses yet.</p>
-        <?php endif; ?>
-    </div>
+        </div>
+    <?php else: ?>
+        <p>You have no assigned courses yet.</p>
+    <?php endif; ?>
 </div>
 
 <style>
-.dashboard-container {
+.courses-container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 20px;
@@ -103,27 +67,16 @@ $total_students = $stmt_total_students->get_result()->fetch_assoc()['total_stude
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
-.dashboard-container h1 {
+.courses-container h1 {
     color: #1e3a8a;
-}
-
-.tutor-details {
+    text-align: center;
     margin-bottom: 25px;
-    padding: 15px;
-    background: #f3f4f6;
-    border-radius: 8px;
-}
-
-.tutor-details p {
-    margin: 5px 0;
-    font-size: 1rem;
 }
 
 .course-cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 20px;
 }
 
 .course-card {
@@ -132,16 +85,24 @@ $total_students = $stmt_total_students->get_result()->fetch_assoc()['total_stude
     background: #f7f7f7;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 
 .course-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
+    color: #1e3a8a;
 }
 
 .course-card p {
     font-size: 0.95rem;
     margin: 5px 0;
+    color: #333;
 }
 
 .course-card .btn {
@@ -152,6 +113,7 @@ $total_students = $stmt_total_students->get_result()->fetch_assoc()['total_stude
     color: #fff;
     border-radius: 6px;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .course-card .btn:hover {
@@ -159,4 +121,3 @@ $total_students = $stmt_total_students->get_result()->fetch_assoc()['total_stude
 }
 </style>
 
-<?php include("../includes/footer.php"); ?>

@@ -23,15 +23,15 @@
             <span class="text-xl font-bold text-gray-800">Creative Cloud</span>
           </a>
           <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
-            <a href="index.php" class="text-blue-600 font-semibold transition">Home</a>
-            <a href="about.php" class="hover:text-blue-600 transition">About</a>
+            <a href="index.php" class="hover:text-blue-600 transition">Home</a>
+            <a href="about.php" class="text-blue-600 font-semibold transition">About</a>
             <a href="courses.php" class="hover:text-blue-600 transition">Courses</a>
             <a href="contact.php" class="hover:text-blue-600 transition">Contact</a>
           </nav>
           <div class="hidden md:flex items-center space-x-4">
-            <a href="login.php" class="text-gray-700 hover:text-blue-600 font-medium transition">Login</a>
-            <a href="register.php" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition">Sign Up</a>
-          </div>
+           <a href="login.php" class="text-gray-700 hover:text-blue-600 font-medium transition">Login</a>
+                <a href="signup.php" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition">Sign Up</a>
+            </div>
         </div>
       </div>
     </header>
@@ -74,7 +74,7 @@
           </div>
           <span class="text-xl font-bold text-gray-800">Creative Cloud</span>
         </div>
-        © 2024 Creative Cloud. All rights reserved.
+        © 2025 Creative Cloud. All rights reserved.
       </div>
     </footer>
   </div>

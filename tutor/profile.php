@@ -89,25 +89,103 @@ $courses = $stmt_courses->get_result();
 </div>
 
 <style>
+/* Content wrapper */
 .content {
-    margin-left: 220px;
-    padding: 20px;
+    margin-left: 30px; /* adjust for sidebar */
+    margin-top: 0px;   /* adjust for top header */
+    padding: 20px 30px;
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+/* Page title */
+.content h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+/* Description paragraph */
+.content p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-.table th, .table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
+
+/* Table headers */
 .table th {
     background-color: #1e3a8a;
-    color: white;
+    color: #fff;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
 }
+
+/* Table cells */
+.table td {
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #202124;
+    vertical-align: middle;
+}
+
+/* Alternate row colors */
 .table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f7f7f7;
 }
+
+/* Row hover effect */
+.table tr:hover {
+    background-color: #eaf0ff;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .content {
+        margin-left: 20px;
+        padding: 16px;
+    }
+    .table th, .table td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .table thead {
+        display: none;
+    }
+    .table tr {
+        display: block;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+    .table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #555;
+    }
+}
+
 </style>

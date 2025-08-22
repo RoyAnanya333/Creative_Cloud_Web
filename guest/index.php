@@ -45,7 +45,7 @@
                 </a>
             <?php else: ?>
                 <a href="login.php" class="text-gray-700 hover:text-blue-600 font-medium transition">Login</a>
-                <a href="register.php" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition">Sign Up</a>
+                <a href="signup.php" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition">Sign Up</a>
             <?php endif; ?>
           </div>
         </div>

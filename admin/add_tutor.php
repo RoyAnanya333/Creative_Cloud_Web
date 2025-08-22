@@ -52,7 +52,116 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <link rel="stylesheet" href="../assets/CSS/stud.css">
 <link rel="stylesheet" href="../assets/CSS/admin.css">
+<style>
+    /* Reset */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f8fc;
+    color: #202124;
+}
+
+/* Content wrapper */
+.content {
+    margin-left: 220px; /* space for sidebar */
+    padding: 24px;
+    padding-top: 80px; /* leave space for fixed header */
+    min-height: calc(100vh - 60px);
+}
+
+/* Headings */
+.content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #1a73e8;
+}
+
+/* Form */
+.form {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    max-width: 600px;
+}
+
+.form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 12px;
+    color: #333;
+}
+
+.form input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    transition: border-color 0.2s;
+}
+
+.form input:focus {
+    outline: none;
+    border-color: #1a73e8;
+}
+
+/* Buttons */
+.btn {
+    margin-top: 16px;
+    padding: 12px 20px;
+    background: #1a73e8;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #1666c1;
+}
+
+/* Success & Error messages */
+.success {
+    background: #e6f4ea;
+    color: #188038;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.error {
+    background: #fce8e6;
+    color: #b00020;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .content {
+        margin-left: 0;
+        padding-top: 140px; /* header + sidebar stacked */
+    }
+
+    .form {
+        width: 100%;
+        padding: 16px;
+    }
+}
+</Style>
 <div class="content">
     <h1>Add Tutor</h1>
 

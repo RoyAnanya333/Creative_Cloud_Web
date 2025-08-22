@@ -17,6 +17,30 @@
     transition: background 0.2s;
 }
 
+
+
+
+
+
+/* Edit button */
+.btn-edit {
+    background-color: #3b82f6; /* Blue */
+}
+.btn-edit:hover {
+    background-color: #2563eb;
+}
+
+/* Restrict / Unrestrict button */
+.btn-restrict {
+    background-color: #f97316; /* Orange */
+}
+.btn-restrict:hover {
+    background-color: #ea580c;
+}
+
+
+
+
 .btn:hover {
     background: #1e40af;
 }
@@ -100,20 +124,3 @@
     color: #4b0082;
 }
 
-
-
-/* Edit button */
-.btn-edit {
-    background-color: #3b82f6; /* Blue */
-}
-.btn-edit:hover {
-    background-color: #2563eb;
-}
-
-/* Restrict / Unrestrict button */
-.btn-restrict {
-    background-color: #f97316; /* Orange */
-}
-.btn-restrict:hover {
-    background-color: #ea580c;
-}

@@ -36,15 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username']  = $user['username'];
             $_SESSION['full_name'] = $user['full_name'];
 
-            // -------------------------
-            // Tutor check added properly
-            // -------------------------
             switch ($user['user_type']) {
                 case 'admin':
                     header("Location: ../admin/index.php");
                     exit;
                 case 'tutor':
-                    // Ensure tutor has a profile
                     $stmt_tutor = $conn->prepare("SELECT id FROM tutor_profiles WHERE user_id=? LIMIT 1");
                     $stmt_tutor->bind_param("i", $user['id']);
                     $stmt_tutor->execute();
@@ -71,25 +67,81 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include '../includes/header.php'; ?>
-<link rel="stylesheet" href="../assets/css/main.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login — Creative Cloud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col">
 
-<div class="auth-container">
-    <h2>Login</h2>
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="index.php" class="flex items-center">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mr-3">
+              <i class="ri-graduation-cap-line text-white text-xl"></i>
+            </div>
+            <span class="text-xl font-bold text-gray-800">Creative Cloud</span>
+          </a>
+          <div class="hidden md:flex items-center space-x-4">
+            <a href="signup.php" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <?php if (!empty($errors)): ?>
-        <?php foreach ($errors as $error): ?>
-            <p class="error"><?= htmlspecialchars($error) ?></p>
-        <?php endforeach; ?>
-    <?php endif; ?>
+  <!-- Main content -->
+  <main class="flex-grow flex items-center justify-center py-12">
+    <div class="bg-white rounded-2xl shadow-lg p-10 max-w-md w-full">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Login To Your Profile</h2>
 
-    <form method="POST" class="auth-form">
-        <input type="text" name="username_email" placeholder="Username or Email" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-    </form>
+        <?php if (!empty($errors)): ?>
+            <div class="space-y-2 mb-4">
+            <?php foreach ($errors as $error): ?>
+                <div class="rounded-md bg-red-100 p-3 text-sm text-red-700 flex items-center gap-2">
+                    <i class="ri-error-warning-line"></i>
+                    <span><?= htmlspecialchars($error) ?></span>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
-    <p>Don't have an account? <a href="signup.php">Sign up here</a></p>
-</div>
+        <form method="POST" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Username or Email</label>
+                <input type="text" name="username_email" required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <input type="password" name="password" required
+                    class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300" />
+            </div>
+            <button type="submit"
+                class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-green-600 hover:to-blue-700 transition">Login</button>
+        </form>
 
-<?php include '../includes/footer.php'; ?>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t py-8 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+          <div class="flex items-center justify-center mb-4">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mr-3">
+               <i class="ri-graduation-cap-line text-white text-xl"></i>
+            </div>
+            <span class="text-xl font-bold text-gray-800">Creative Cloud</span>
+          </div>
+          © 2024 Creative Cloud. All rights reserved.
+      </div>
+  </footer>
+
+</body>
+</html>

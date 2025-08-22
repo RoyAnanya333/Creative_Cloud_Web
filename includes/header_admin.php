@@ -111,7 +111,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <a href="tutors.php" class="<?= $current_page == 'tutors.php' ? 'active' : '' ?>">Tutors</a>
     <a href="courses.php" class="<?= $current_page == 'courses.php' ? 'active' : '' ?>">Courses</a>
     <a href="messages.php" class="<?= $current_page == 'messages.php' ? 'active' : '' ?>">Messages</a>
-    <a href="profile.php" class="<?= $current_page == 'profile.php' ? 'active' : '' ?>">Profile</a>
     <a href="../logout.php">Logout</a>
 </div>
 

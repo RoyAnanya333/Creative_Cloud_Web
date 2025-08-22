@@ -177,4 +177,3 @@ if (!empty($course['image_url']) && file_exists("../" . $course['image_url'])) {
 }
 </style>
 
-<?php include("../includes/student_footer.php"); ?>

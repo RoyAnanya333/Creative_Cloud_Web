@@ -43,7 +43,118 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<style>
+    
 
+
+    /* Container */
+.content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px 25px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.content h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1e3a8a;
+    font-size: 2rem;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"] {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form input:focus {
+    border-color: #1e3a8a;
+    box-shadow: 0 0 5px rgba(30, 58, 138, 0.3);
+    outline: none;
+}
+
+/* Submit button */
+.form .btn {
+    margin-top: 25px;
+    padding: 12px 20px;
+    background-color: #1e3a8a;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form .btn:hover {
+    background-color: #374ccc;
+    transform: translateY(-2px);
+}
+
+/* Error messages */
+.error {
+    background-color: #ffe6e6;
+    border-left: 5px solid #ff4d4d;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.error p {
+    margin: 5px 0;
+    color: #b30000;
+    font-size: 0.95rem;
+}
+
+/* Success message */
+.success {
+    background-color: #e6ffed;
+    border-left: 5px solid #28a745;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    color: #155724;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .content {
+        padding: 20px 15px;
+    }
+
+    .form input,
+    .form .btn {
+        font-size: 0.95rem;
+    }
+}
+
+    </style>
 <!-- Load CSS -->
 
 <link rel="stylesheet" href="../assets/CSS/stud.css">

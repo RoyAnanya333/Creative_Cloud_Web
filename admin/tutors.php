@@ -29,7 +29,81 @@ $result = $stmt->get_result();
             </form>
         </div>
     </div>
+<Style>
+    /* Table action buttons */
+.btn-edit,
+.btn-restrict,
+.btn-delete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    margin-right: 4px;
+}
 
+/* Edit button - blue */
+.btn-edit {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #1d4ed8;
+}
+
+/* Restrict / Unrestrict button - amber/orange */
+.btn-restrict {
+    background-color: #facc15;
+    color: #1f2937;
+}
+
+.btn-restrict:hover {
+    background-color: #eab308;
+}
+
+/* Delete button - red */
+.btn-delete {
+    background-color: #ef4444;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* Optional: smaller screens table adjustments */
+@media (max-width: 900px) {
+    .btn-edit,
+    .btn-restrict,
+    .btn-delete {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+    }
+}
+
+
+/* Make action buttons align in a single row */
+td > .btn-edit,
+td > .btn-restrict,
+td > .btn-delete {
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 0; /* remove any bottom margin so they stay in one line */
+}
+
+/* Optional: table cell flex for better alignment */
+td:last-child {
+    display: flex;
+    flex-wrap: nowrap; /* prevent wrapping */
+    gap: 6px; /* space between buttons */
+    align-items: center;
+}
+
+</style>
     <table class="table">
         <thead>
             <tr>
@@ -57,7 +131,7 @@ $result = $stmt->get_result();
                     <td><?= htmlspecialchars($row['nid']) ?></td>
                     <td><?= $row['is_active'] ? 'Active' : 'Restricted' ?></td>
                     <td>
-                         <a href="edit_tutor.php?id=<?= $row['id'] ?>" class="btn btn-edit">Edit</a> | 
+                         <a href="edit_tutor.php?id=<?= $row['id'] ?>" class="btn btn-edit">Edit</a>
 
                          
                         <button class="btn btn-restrict" onclick="openModal('<?= $row['id'] ?>', '<?= $row['is_active'] ? 'restrict' : 'unrestrict' ?>')">
