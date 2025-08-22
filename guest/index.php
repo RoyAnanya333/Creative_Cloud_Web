@@ -33,14 +33,14 @@
           <div class="hidden md:flex items-center space-x-4">
             <?php if(isset($_SESSION['username'])): ?>
                 <?php
-                    $dashboard_link = 'student.php'; // Default
+                    $dashboard_link = '../student/index.php'; // Default
                     if (isset($_SESSION['userType'])) {
-                        if ($_SESSION['userType'] === 'tutor') $dashboard_link = 'tutor.php';
-                        if ($_SESSION['userType'] === 'admin') $dashboard_link = 'admin.php';
+                        if ($_SESSION['userType'] === 'tutor') $dashboard_link = '../tutor/index.php';
+                        if ($_SESSION['userType'] === 'admin') $dashboard_link = '../admin/index.php';
                     }
                 ?>
                 <a href="<?php echo $dashboard_link; ?>" class="font-medium text-gray-700 hover:text-blue-600 transition">Dashboard</a>
-                <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm font-medium">
+                <a href="../logout.php" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm font-medium">
                     Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)
                 </a>
             <?php else: ?>

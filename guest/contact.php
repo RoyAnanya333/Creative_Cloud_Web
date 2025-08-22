@@ -69,7 +69,6 @@
         <!-- Left: Contact info -->
         <div>
           <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Get in touch</h1>
-          <p class="text-gray-600 mb-6">Have a question about courses, enrollment, or partnerships? Send us a message — we reply within 48 hours on business days.</p>
           <div class="space-y-6">
             <div class="flex items-start gap-4">
               <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl"><i class="ri-mail-line"></i></div>
@@ -88,34 +87,7 @@
           </div>
         </div>
         <!-- Right: Contact form -->
-        <div>
-          <div class="bg-white rounded-2xl shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Send us a message</h2>
-            <?php echo $form_message; ?>
-            <form action="contact.php" method="POST" class="space-y-4">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full name</label>
-                <input id="name" name="name" type="text" required class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
-                <input id="email" name="email" type="email" required class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                <input id="subject" name="subject" type="text" required class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300" />
-              </div>
-              <div>
-                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                <textarea id="message" name="message" rows="5" required class="w-full rounded-lg border border-gray-300 px-4 py-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-300"></textarea>
-              </div>
-              <div class="pt-2">
-                <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-blue-600 text-white py-3 rounded-lg font-medium hover:from-green-600 hover:to-blue-700">Send Message</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+       
     </section>
   </main>
 
